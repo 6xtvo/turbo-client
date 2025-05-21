@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "Discord bot for the westside Discord server",
     "private": true,
+    "type": "module",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,5 +26,8 @@
         "@biomejs/biome": "1.9.4",
         "@types/node": "^22.15.2",
         "typescript": "^5.8.3"
+    },
+    "dependencies": {
+        "discord.js": "^14.19.1"
     }
 }
