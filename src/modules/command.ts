@@ -7,9 +7,10 @@ import {
 	type PermissionsString,
 	SlashCommandBuilder
 } from "discord.js";
-import type { SubCommand } from "./subcommand";
+import type { SubCommand } from "./SubCommand";
+import type { Module } from "@app/structures/Module";
 
-export class Command extends SlashCommandBuilder {
+export class Command extends SlashCommandBuilder implements Module {
 	public aliases: string[];
 	public args?: ApplicationCommandOption[];
 	public category: string;

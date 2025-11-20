@@ -1,4 +1,4 @@
-import type { MinkoClient } from "@app/structures/Client";
+import type { DCClient } from "@app/structures/Client";
 import type { ClientOptions, CommandInteraction } from "discord.js";
 
 export interface ConfigOptions {
@@ -24,5 +24,5 @@ export type MessageFunction =
 	| string
 	| ((
 			interaction: CommandInteraction,
-			client: MinkoClient
+			client: DCClient
 	  ) => Promise<string>);

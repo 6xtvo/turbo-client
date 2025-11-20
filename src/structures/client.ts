@@ -6,7 +6,7 @@ import { join } from "node:path";
 import { EmbedService } from "@app/services/EmbedService";
 import { Client } from "discord.js";
 
-export class MinkoClient extends Client {
+export class DCClient extends Client {
 	public config: ConfigOptions;
 	public embeds = new EmbedService({
 		default: 0x2f3136

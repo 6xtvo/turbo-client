@@ -1,8 +1,8 @@
-import { MinkoClient } from "@app/structures/Client";
+import { DCClient } from "@app/structures/Client";
 
 // @ts-ignore
 import config from "../app.config.mjs";
 
-const client = new MinkoClient(config);
+const client = new DCClient(config);
 
 client.start();

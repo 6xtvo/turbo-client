@@ -30,3 +30,4 @@ export class PathError extends Error {
 		Error.captureStackTrace(this, this.constructor);
 	}
 }
+

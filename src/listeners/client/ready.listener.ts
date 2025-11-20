@@ -1,6 +1,6 @@
-import { Listener } from "@app/modules/listener";
+import { Listener } from "@app/modules/Listener";
 import { LogService } from "@app/services/LogService";
-import type { MinkoClient } from "@app/structures/Client";
+import type { DCClient } from "@app/structures/Client";
 import { ActivityType } from "discord.js";
 
 export default class ReadyListener extends Listener {
@@ -12,7 +12,7 @@ export default class ReadyListener extends Listener {
 		});
 	}
 
-	public async exec(client: MinkoClient): Promise<void> {
+	public async exec(client: DCClient): Promise<void> {
 		if (client.isReady()) {
 			console.log(
 				LogService.ready(

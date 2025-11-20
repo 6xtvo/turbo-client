@@ -2,6 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { LogService } from "@app/services/LogService";
+import { PathError } from "@app/structures/Error";
 
 const importPattern = /import\s+[^'"]+['"](\.+\/[^'"]+)['"]/g;
 const jsExtensionPattern = /\.js$/i;
@@ -10,16 +11,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const dist = path.resolve(__dirname, "../");
-
 const excludedExts = [".mjs"];
-
-class PathError extends Error {
-	public constructor(message: string) {
-		super(`PathError: ${message}`);
-		this.name = this.constructor.name;
-		Error.captureStackTrace(this, this.constructor);
-	}
-}
 
 async function updateFileImports(filePath: string): Promise<void> {
 	try {

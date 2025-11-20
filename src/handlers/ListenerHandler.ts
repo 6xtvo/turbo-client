@@ -1,13 +1,13 @@
-import type { Listener } from "@app/modules/listener";
+import type { Listener } from "@app/modules/Listener";
 import { LogService } from "@app/services/LogService";
-import type { MinkoClient } from "@app/structures/Client";
+import type { DCClient } from "@app/structures/Client";
 import { Handler } from "@app/structures/Handler";
 
 export class ListenerHandler extends Handler<Listener> {
-	private client: MinkoClient;
+	private client: DCClient;
 	private directory: string;
 
-	public constructor(client: MinkoClient, options: ListenerHandlerOptions) {
+	public constructor(client: DCClient, options: ListenerHandlerOptions) {
 		super();
 		this.client = client;
 		this.directory = options.directory;

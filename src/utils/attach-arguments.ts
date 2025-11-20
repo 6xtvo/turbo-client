@@ -1,5 +1,5 @@
-import type { Command } from "@app/modules/command";
-import type { SubCommand } from "@app/modules/subcommand";
+import type { Command } from "@app/modules/Command";
+import type { SubCommand } from "@app/modules/SubCommand";
 import {
 	type ApplicationCommandAttachmentOption,
 	type ApplicationCommandBooleanOption,
