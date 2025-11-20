@@ -1,11 +1,7 @@
-import Utils from "@app/utils";
-
+import { enumValues } from "@app/utils/enum-values";
 import { GatewayIntentBits, Partials } from "discord.js";
 
-const ALL_INTENTS = Utils.enumValues(GatewayIntentBits)
-const ALL_PARTIALS = Utils.enumValues(Partials)
+const ALL_INTENTS = enumValues(GatewayIntentBits);
+const ALL_PARTIALS = enumValues(Partials);
 
-export {
-    ALL_INTENTS,
-    ALL_PARTIALS
-}
+export { ALL_INTENTS, ALL_PARTIALS };

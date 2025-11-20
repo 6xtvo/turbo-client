@@ -1,33 +1,30 @@
 {
-    "name": "westside",
-    "version": "1.0.0",
-    "description": "Discord bot for the westside Discord server",
-    "private": true,
-    "type": "module",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [
-        "social",
-        "community",
-        "asian",
-        "asians",
-        "keshi"
-    ],
-    "author": {
-        "email": "ascendus.dev@gmail.com",
-        "name": "xtncz",
-        "url": "https://github.com/xtncz"
-    },
-    "license": "ISC",
-    "packageManager": "pnpm@10.8.1",
-    "devDependencies": {
-        "@biomejs/biome": "1.9.4",
-        "@types/node": "^22.15.2",
-        "typescript": "^5.8.3"
-    },
-    "dependencies": {
-        "discord.js": "^14.19.1"
-    }
+	"name": "minkoj",
+	"version": "1.0.0",
+	"description": "Discord bot for the minkoj Discord server",
+	"private": true,
+	"type": "module",
+	"main": "dist/index.js",
+	"scripts": {
+		"fix": "pnpm biome check --write --unsafe .",
+		"build": "tsc && dist/scripts/resolve-paths.js",
+		"start": "pnpm build && node dist/index.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": {
+		"email": "ascendus.dev@gmail.com",
+		"name": "6xtvo",
+		"url": "https://github.com/6xtvo"
+	},
+	"license": "GNU",
+	"packageManager": "pnpm@10.8.1",
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@types/node": "^22.19.1",
+		"typescript": "^5.9.3"
+	},
+	"dependencies": {
+		"discord.js": "^14.25.0",
+		"dotenv": "^16.6.1"
+	}
 }
