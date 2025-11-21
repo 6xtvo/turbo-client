@@ -3,6 +3,7 @@ import { fileURLToPath } from "node:url";
 import { LogService } from "@/services/LogService";
 import { PathError } from "@/structures/Error";
 import type { ConfigOptions } from "@pkgs/types";
+import { ALL_INTENTS, ALL_PARTIALS } from "@/constants/discord";
 
 export async function resolveConfig(filePath: string): Promise<ConfigOptions> {
 	try {
@@ -12,12 +13,19 @@ export async function resolveConfig(filePath: string): Promise<ConfigOptions> {
 		const configFile = await import(`file://${resolvedPath}`);
 
 		if (configFile?.default) {
-			return configFile.default as ConfigOptions;
+			const defaultConfig = configFile.default;
+
+			if (typeof defaultConfig === "function") {
+				return defaultConfig(ALL_INTENTS, ALL_PARTIALS);
+			}
+
+			return defaultConfig as ConfigOptions;
 		}
 
 		throw new PathError("Config file does not have a default export");
 	} catch (error: unknown) {
 		LogService.log("error", (error as Error).message, "ConfigResolver");
-		return {} as ConfigOptions;
 	}
+
+    return {} as ConfigOptions;
 }
