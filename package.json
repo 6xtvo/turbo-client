@@ -16,7 +16,7 @@
         "name": "6xtvo",
         "url": "https://github.com/6xtvo"
     },
-    "license": "GNU",
+    "license": "GPL-3.0-only",
     "packageManager": "pnpm@10.23.0",
     "devDependencies": {
         "@biomejs/biome": "1.9.4",
