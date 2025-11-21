@@ -1,0 +1,28 @@
+{
+	"$schema": "https://turborepo.com/schema.json",
+	"globalDependencies": [".env", ".env.local"],
+	"remoteCache": {
+		"enabled": true
+	},
+	"tasks": {
+		"lint": {
+			"dependsOn": ["lint"]
+		},
+		"build": {
+			"dependsOn": ["^build"],
+			"cache": true,
+			"outputs": ["dist/**", "logs/**"]
+		},
+		"start": {
+			"dependsOn": ["^start"]
+		},
+		"dev": {
+			"dependsOn": ["^dev"],
+			"cache": false
+		},
+		"check-types": {
+			"dependsOn": ["^check-types"]
+		}
+	},
+	"ui": "tui"
+}

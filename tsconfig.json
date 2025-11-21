@@ -1,50 +1,10 @@
 {
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"extends": "./packages/ts-config/tsconfig.base.json",
 	"compilerOptions": {
-		"incremental": true,
-		"composite": false,
-		"tsBuildInfoFile": "logs/.tsbuildinfo",
-		"target": "ESNext",
-		"lib": [
-			"ESNext",
-			"ESNext.Array",
-			"ESNext.AsyncIterable",
-			"ESNext.Intl",
-			"ESNext.Symbol"
-		],
-		"experimentalDecorators": true,
-		"emitDecoratorMetadata": true,
-		"module": "ESNext",
-		"moduleResolution": "bundler",
-		"rootDir": "src",
 		"paths": {
-			"@app/*": ["./src/*"]
-		},
-		"typeRoots": ["node_modules/@types", "src/types"],
-		"allowUmdGlobalAccess": true,
-		"resolveJsonModule": true,
-		"noResolve": false,
-		"allowJs": false,
-		"checkJs": false, 
-		"declaration": false,
-		"declarationMap": false,
-		"emitDeclarationOnly": false,
-		"sourceMap": false,
-		"outDir": "dist",
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
-		"strict": true,
-		"noImplicitAny": false,
-		"strictNullChecks": true,
-		"strictFunctionTypes": true,
-		"strictBindCallApply": true,
-		"strictPropertyInitialization": false,
-		"noImplicitThis": true,
-		"useUnknownInCatchVariables": true,
-		"alwaysStrict": true,
-		"allowUnusedLabels": false,
-		"allowUnreachableCode": false,
-		"skipLibCheck": true
-	},
-	"include": ["src", "environment.d.ts"],
-	"exclude": ["dist", "node_modules", "app.config.mjs"]
+			"@pkgs/types*": ["./packages/types/*"],
+			"@pkgs/ts-config/*": ["./packages/ts-config/*"]
+		}
+	}
 }

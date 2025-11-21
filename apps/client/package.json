@@ -1,0 +1,17 @@
+{
+    "name": "client",
+    "version": "1.0.0",
+    "private": true,
+    "main": "dist/index.js",
+    "type": "module",
+    "scripts": {
+        "build": "tsc -b && tsc-alias && node dist/scripts/resolve-paths.js",
+        "check-types": "tsc --noEmit",
+        "dev": "cross-env NODE_ENV=development pnpm build && node dist/index.js",
+        "start": "cross-env NODE_ENV=production pnpm build && node dist/index.js"
+    },
+    "devDependencies": {
+        "@pkgs/ts-config": "workspace:*",
+        "@pkgs/types": "workspace:*"
+    }
+}
