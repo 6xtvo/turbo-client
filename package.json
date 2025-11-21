@@ -1,36 +1,36 @@
 {
-    "name": "turbo-client",
-    "version": "1.0.0",
-    "description": "Discord client application built with discord.js and TypeScript.",
-    "private": true,
-    "type": "module",
-    "scripts": {
-        "build": "turbo run build",
-        "check-types": "turbo run check-types",
-        "dev": "turbo run dev",
-        "lint": "biome check --write --unsafe .",
-        "start": "turbo run start"
-    },
-    "author": {
-        "email": "ascendus.dev@gmail.com",
-        "name": "6xtvo",
-        "url": "https://github.com/6xtvo"
-    },
-    "license": "GPL-3.0-only",
-    "packageManager": "pnpm@10.23.0",
-    "devDependencies": {
-        "@biomejs/biome": "1.9.4",
-        "@types/node": "^22.19.1",
-        "cross-env": "^10.1.0",
-        "turbo": "^2.6.1",
-        "typescript": "^5.9.3"
-    },
-    "dependencies": {
-        "discord.js": "^14.25.0",
-        "dotenv": "^16.6.1",
-        "tsc-alias": "^1.8.16"
-    },
-    "volta": {
-        "node": "22.16.0"
-    }
+	"name": "turbo-client",
+	"version": "1.0.0",
+	"description": "Discord client application built with discord.js and TypeScript.",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build": "turbo run build",
+		"check-types": "turbo run check-types",
+		"dev": "turbo run dev",
+		"lint": "biome check --write --unsafe .",
+		"start": "turbo run start"
+	},
+	"author": {
+		"email": "ascendus.dev@gmail.com",
+		"name": "6xtvo",
+		"url": "https://github.com/6xtvo"
+	},
+	"license": "GPL-3.0-only",
+	"packageManager": "pnpm@10.23.0",
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@types/node": "^22.19.1",
+		"cross-env": "^10.1.0",
+		"turbo": "^2.6.1",
+		"typescript": "^5.9.3"
+	},
+	"dependencies": {
+		"discord.js": "^14.25.0",
+		"dotenv": "^16.6.1",
+		"tsc-alias": "^1.8.16"
+	},
+	"volta": {
+		"node": "22.16.0"
+	}
 }

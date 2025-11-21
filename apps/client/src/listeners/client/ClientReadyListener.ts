@@ -3,9 +3,9 @@ import { LogService } from "@/services/LogService";
 import type { TurboClient } from "@/structures/Client";
 import { ActivityType } from "discord.js";
 
-export default class ReadyListener extends Listener {
+export default class ClientReadyListener extends Listener {
 	public constructor() {
-		super("ready", {
+		super("clientReady", {
 			category: "client",
 			emitter: "client",
 			once: true
@@ -17,7 +17,7 @@ export default class ReadyListener extends Listener {
 			LogService.log(
 				"ready",
 				`Successfully logged in as ${client.user.tag}`,
-				this.constructor.name
+				ClientReadyListener.name
 			);
 
 			client.user.setActivity({

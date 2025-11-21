@@ -1,5 +1,5 @@
 import { Options } from "discord.js";
-import { ALL_INTENTS, ALL_PARTIALS } from "./dist/constants/discord";
+import { ALL_INTENTS, ALL_PARTIALS } from "./dist/constants/discord.js";
 
 import "dotenv/config";
 

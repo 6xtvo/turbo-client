@@ -58,14 +58,13 @@ function format(type: LogType, message: string, emitter: string): string {
 		new Date().toLocaleDateString().replaceAll("/", "-")
 	);
 	const time = CHALK.green(new Date().toLocaleTimeString().toUpperCase());
-
 	const level = LEVEL_COLORS[type](LEVEL_LABELS[type]);
-
+    const paddedLevel = level + " ".repeat(Math.max(0, 8 - LEVEL_LABELS[type].length));
 	const paddedEmitter =
 		CHALK.blueBright(emitter) +
 		" ".repeat(Math.max(0, 27 - emitter.length) + 1);
 
-	return `${date} ${time}  ${level.padEnd(8)} --- [main] ${paddedEmitter}: ${message}`;
+	return `${date} ${time}  ${paddedLevel} --- [main] ${paddedEmitter}: ${message}`;
 }
 
 function info(message: string) {

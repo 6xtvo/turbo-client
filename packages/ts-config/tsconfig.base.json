@@ -1,9 +1,9 @@
 {
 	"compilerOptions": {
 		"incremental": true,
-		"target": "ESNext",
+		"target": "esnext",
 		"lib": ["ESNext", "ESNext.Array", "ESNext.AsyncIterable"],
-		"module": "ESNext",
+		"module": "esnext",
 		"moduleResolution": "bundler",
 		"experimentalDecorators": true,
 		"emitDecoratorMetadata": true,
