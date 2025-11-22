@@ -12,9 +12,7 @@ export class CommandHandler extends Handler<Command> {
 		this.directory = options.directory;
 	}
 
-    private async registerCommands() {
-
-    }
+	private async registerCommands() {}
 }
 
 export interface CommandHandlerOptions {
