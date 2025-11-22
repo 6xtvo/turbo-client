@@ -11,6 +11,10 @@ export class CommandHandler extends Handler<Command> {
 		this.client = client;
 		this.directory = options.directory;
 	}
+
+    private async registerCommands() {
+
+    }
 }
 
 export interface CommandHandlerOptions {
