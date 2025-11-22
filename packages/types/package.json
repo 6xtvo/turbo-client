@@ -1,15 +1,15 @@
 {
-	"name": "@pkgs/types",
+	"devDependencies": {
+		"@pkgs/ts-config": "workspace:*"
+	},
 	"exports": {
 		".": "./src/index.ts"
 	},
-	"version": "1.0.0",
+	"name": "@pkgs/types",
 	"private": true,
-	"type": "module",
 	"scripts": {
 		"check-types": "tsc --noEmit"
 	},
-	"devDependencies": {
-		"@pkgs/ts-config": "workspace:*"
-	}
+	"type": "module",
+	"version": "1.0.0"
 }

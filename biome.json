@@ -1,57 +1,55 @@
 {
-    "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-    "vcs": {
-        "enabled": true,
-        "clientKind": "git",
-        "useIgnoreFile": true
-    },
-    "assists": {
-        "enabled": true,
-        "actions": {
-            "source": {
-                "useSortedKeys": "on"
-            }
-        }
-    },
-    "files": {
-        "ignoreUnknown": true,
-        "ignore": [
-            "commitlint.config.js"
-        ]
-    },
-    "formatter": {
-        "enabled": true,
-        "indentStyle": "tab",
-        "useEditorconfig": true
-    },
-    "organizeImports": {
-        "enabled": true
-    },
-    "linter": {
-        "enabled": true,
-        "rules": {
-            "recommended": true,
-            "correctness": {
-                "noUnusedVariables": "error",
-                "noUnusedImports": "error"
-            }
-        }
-    },
-    "javascript": {
-        "formatter": {
-            "quoteStyle": "double",
-            "semicolons": "always",
-            "trailingCommas": "none",
-            "quoteProperties": "asNeeded"
-        },
-        "assists": {
-            "enabled": true
-        }
-    },
-    "json": {
-        "formatter": {
-            "enabled": true,
-            "trailingCommas": "none"
-        }
-    }
+	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+	"assists": {
+		"actions": {
+			"source": {
+				"useSortedKeys": "on"
+			}
+		},
+		"enabled": true
+	},
+	"files": {
+		"ignore": ["commitlint.config.js"],
+		"ignoreUnknown": true
+	},
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "tab",
+		"useEditorconfig": true
+	},
+	"javascript": {
+		"assists": {
+			"enabled": true
+		},
+		"formatter": {
+			"quoteProperties": "asNeeded",
+			"quoteStyle": "double",
+			"semicolons": "always",
+			"trailingCommas": "none"
+		}
+	},
+	"json": {
+		"formatter": {
+			"enabled": true,
+			"trailingCommas": "none"
+		}
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"correctness": {
+				"noUnusedImports": "error",
+				"noUnusedVariables": "error"
+			},
+			"recommended": true
+		}
+	},
+	"organizeImports": {
+		"enabled": true
+	},
+	"vcs": {
+		"clientKind": "git",
+		"enabled": true,
+		"useIgnoreFile": true
+	}
 }

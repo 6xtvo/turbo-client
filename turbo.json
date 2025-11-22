@@ -9,19 +9,19 @@
 			"dependsOn": ["biome"]
 		},
 		"build": {
-			"dependsOn": ["^build"],
 			"cache": true,
+			"dependsOn": ["^build"],
 			"outputs": ["dist/**", "logs/**"]
-		},
-		"start": {
-			"dependsOn": ["^start"]
-		},
-		"dev": {
-			"dependsOn": ["^dev"],
-			"cache": false
 		},
 		"check-types": {
 			"dependsOn": ["^check-types"]
+		},
+		"dev": {
+			"cache": false,
+			"dependsOn": ["^dev"]
+		},
+		"start": {
+			"dependsOn": ["^start"]
 		}
 	},
 	"ui": "tui"

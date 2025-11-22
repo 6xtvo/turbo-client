@@ -1,27 +1,27 @@
 {
-	"editor.defaultFormatter": "biomejs.biome",
-	"editor.formatOnSave": true,
-	"editor.formatOnPaste": true,
-	"editor.formatOnSaveMode": "file",
-	"editor.codeActionsOnSave": {
-		"source.fixAll.biome": "explicit"
-	},
-	"typescript.tsdk": "node_modules/typescript/lib",
-	"search.exclude": {
-		"**/node_modules": true,
-		"**/dist": true,
-		"**/logs": true
-	},
-	"[typescript]": {
+	"[javascript]": {
 		"editor.defaultFormatter": "biomejs.biome"
 	},
 	"[jsonc]": {
 		"editor.defaultFormatter": "biomejs.biome"
 	},
-	"[javascript]": {
+	"[typescript]": {
 		"editor.defaultFormatter": "biomejs.biome"
 	},
 	"[yaml]": {
 		"editor.defaultFormatter": "redhat.vscode-yaml"
-	}
+	},
+	"editor.codeActionsOnSave": {
+		"source.fixAll.biome": "explicit"
+	},
+	"editor.defaultFormatter": "biomejs.biome",
+	"editor.formatOnPaste": true,
+	"editor.formatOnSave": true,
+	"editor.formatOnSaveMode": "file",
+	"search.exclude": {
+		"**/dist": true,
+		"**/logs": true,
+		"**/node_modules": true
+	},
+	"typescript.tsdk": "node_modules/typescript/lib"
 }
