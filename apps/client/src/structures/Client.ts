@@ -2,10 +2,10 @@ import { ListenerHandler } from "@/handlers/ListenerHandler";
 import type { ConfigOptions } from "@pkgs/types";
 
 import { join } from "node:path";
+import { CommandHandler } from "@/handlers/CommandHandler";
 import { EmbedService } from "@/services/EmbedService";
 import { printInfo } from "@/utils/print-info";
 import { Client } from "discord.js";
-import { CommandHandler } from "@/handlers/CommandHandler";
 
 export class TurboClient extends Client {
 	public config: ConfigOptions;

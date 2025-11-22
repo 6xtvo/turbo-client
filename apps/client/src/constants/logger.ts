@@ -28,7 +28,7 @@ export const LEVEL_COLORS: Record<LogType, (msg: string) => string> = {
 	ready: CHALK.green,
 	warn: CHALK.yellow,
 	error: CHALK.red,
-    debug: CHALK.blueBright
+	debug: CHALK.blueBright
 };
 
 export const LEVEL_LABELS: Record<LogType, string> = {
@@ -36,5 +36,5 @@ export const LEVEL_LABELS: Record<LogType, string> = {
 	ready: "READY",
 	warn: "WARNING",
 	error: "ERROR",
-    debug: "DEBUG"
+	debug: "DEBUG"
 };

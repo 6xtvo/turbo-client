@@ -1,11 +1,11 @@
 import fs from "node:fs";
+import { LogService } from "@/services/LogService";
 import { ValidatorService } from "@/services/ValidatorService";
 import { ModuleError } from "@/structures/Error";
 import { Module } from "@/structures/Module";
 import { Collection } from "discord.js";
 import { Category } from "./Category";
 import type { TurboClient } from "./Client";
-import { LogService } from "@/services/LogService";
 
 export class Handler<T extends Module = Module> {
 	/**

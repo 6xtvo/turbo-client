@@ -50,7 +50,7 @@ export const LogService = {
 	 * @param {string} emitter The source of the log message
 	 */
 	ready(data: unknown, emitter: string) {
-        this.log("ready", data, emitter);
+		this.log("ready", data, emitter);
 	},
 
 	/**
@@ -70,7 +70,7 @@ export const LogService = {
 	error(data: unknown, error_type: string) {
 		this.log("error", data, error_type);
 	},
-    
+
 	/**
 	 * Logs a debug level message.
 	 * @param {unknown} data The data to log

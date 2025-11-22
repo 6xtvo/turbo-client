@@ -1,22 +1,22 @@
 {
-    "dependencies": {
-        "git-state": "^4.1.0"
-    },
-    "devDependencies": {
-        "@pkgs/env": "workspace:*",
-        "@pkgs/ts-config": "workspace:*",
-        "@pkgs/types": "workspace:*",
-        "@types/git-state": "^4.1.3"
-    },
-    "main": "dist/index.js",
-    "name": "client",
-    "private": true,
-    "scripts": {
-        "build": "tsc -b && tsc-alias && node dist/scripts/resolve-paths.js",
-        "check-types": "tsc --noEmit",
-        "dev": "cross-env NODE_ENV=development pnpm build && node dist/index.js",
-        "start": "cross-env NODE_ENV=production pnpm build && node dist/index.js"
-    },
-    "type": "module",
-    "version": "1.0.0"
+	"dependencies": {
+		"git-state": "^4.1.0"
+	},
+	"devDependencies": {
+		"@pkgs/env": "workspace:*",
+		"@pkgs/ts-config": "workspace:*",
+		"@pkgs/types": "workspace:*",
+		"@types/git-state": "^4.1.3"
+	},
+	"main": "dist/index.js",
+	"name": "client",
+	"private": true,
+	"scripts": {
+		"build": "tsc -b && tsc-alias && node dist/scripts/resolve-paths.js",
+		"check-types": "tsc --noEmit",
+		"dev": "cross-env NODE_ENV=development pnpm build && node dist/index.js",
+		"start": "cross-env NODE_ENV=production pnpm build && node dist/index.js"
+	},
+	"type": "module",
+	"version": "1.0.0"
 }

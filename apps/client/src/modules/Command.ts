@@ -33,7 +33,7 @@ export class Command extends SlashCommandBuilder implements Module {
 			.setDescription(options.description)
 			.setDescriptionLocalizations(options.descriptionLocalisations ?? {})
 			.setCategory(options.category)
-			.setExamples(options.examples.map(example => `/${example}`))
+			.setExamples(options.examples.map((example) => `/${example}`))
 			.setOwnerOnly(options.ownerOnly || false)
 			.setUsage(`/${name} ${opts}`.trim())
 			.setContexts([

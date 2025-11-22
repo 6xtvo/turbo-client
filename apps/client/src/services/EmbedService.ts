@@ -19,7 +19,10 @@ export class EmbedService<TColors extends Record<string, number>> {
 		);
 	}
 
-	public error(interaction: CommandInteraction, options: ErrorMessageOptions) {
+	public error(
+		interaction: CommandInteraction,
+		options: ErrorMessageOptions
+	) {
 		LogService.error(options.error, options.emitter);
 
 		const embed: EmbedBuilder = this.createEmbed({
@@ -30,10 +33,10 @@ export class EmbedService<TColors extends Record<string, number>> {
 			description: `Hey there, ${interaction.user}. Looks like an internal error occurred while processing your command. Please try again later, or if the problem persists, try contacting the owner.`
 		});
 
-        return interaction.reply({
-            embeds: [embed],
-            flags: ["Ephemeral"]
-        })
+		return interaction.reply({
+			embeds: [embed],
+			flags: ["Ephemeral"]
+		});
 	}
 
 	public warn(interaction: CommandInteraction, message: string) {
