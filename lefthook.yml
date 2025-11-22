@@ -3,5 +3,5 @@
 pre-commit:
     parallel: true
     commands:
-        lint:
-            run: pnpm lint
+        biome:
+            run: pnpm biome

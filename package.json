@@ -5,10 +5,10 @@
     "private": true,
     "type": "module",
     "scripts": {
+        "biome": "biome check --write --unsafe .",
         "build": "turbo run build",
         "check-types": "turbo run check-types",
         "dev": "turbo run dev",
-        "lint": "biome check --write --unsafe .",
         "prepare": "lefthook install",
         "start": "turbo run start"
     },
