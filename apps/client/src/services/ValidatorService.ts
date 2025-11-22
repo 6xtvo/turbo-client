@@ -3,12 +3,23 @@ import { ConfigError } from "@/structures/Error";
 import { UtilsError } from "@/structures/Error";
 import type { ConfigOptions } from "@pkgs/types";
 
+function isEmptyObject(obj: unknown) {
+	if (obj === null || typeof obj !== "object") {
+		return false;
+	}
+	return Object.keys(obj).length === 0;
+}
+
 export const ValidatorService = {
 	/**
 	 * Ensures all environment variables are defined and a valid token has been provided/
 	 * @param {ConfigOptions} config The configuration options to be validated
 	 */
 	validateConfig(config: ConfigOptions) {
+		if (isEmptyObject(config)) {
+			throw new ConfigError("Configuration object is empty");
+		}
+
 		const env = config.env;
 
 		for (const [key, value] of Object.entries(process.env)) {
@@ -23,7 +34,7 @@ export const ValidatorService = {
 			"TOKEN" in env &&
 			!(env.TOKEN as string).match(/[A-Za-z\d]{23}\.[\w-]{6}\.[\w-]{27}/g)
 		) {
-			throw new ConfigError("Invalid token provided.");
+			throw new ConfigError("Invalid token provided");
 		}
 	},
 

@@ -59,7 +59,8 @@ function format(type: LogType, message: string, emitter: string): string {
 	);
 	const time = CHALK.green(new Date().toLocaleTimeString().toUpperCase());
 	const level = LEVEL_COLORS[type](LEVEL_LABELS[type]);
-    const paddedLevel = level + " ".repeat(Math.max(0, 8 - LEVEL_LABELS[type].length));
+	const paddedLevel =
+		level + " ".repeat(Math.max(0, 8 - LEVEL_LABELS[type].length));
 	const paddedEmitter =
 		CHALK.blueBright(emitter) +
 		" ".repeat(Math.max(0, 27 - emitter.length) + 1);

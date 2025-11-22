@@ -1,9 +1,9 @@
 import { ListenerHandler } from "@/handlers/ListenerHandler";
-import { ValidatorService } from "@/services/ValidatorService";
 import type { ConfigOptions } from "@pkgs/types";
 
 import { join } from "node:path";
 import { EmbedService } from "@/services/EmbedService";
+import { printInfo } from "@/utils/print-info";
 import { Client } from "discord.js";
 
 export class TurboClient extends Client {
@@ -22,8 +22,7 @@ export class TurboClient extends Client {
 	}
 
 	private async init() {
-		ValidatorService.validateConfig(this.config);
-
+		await printInfo(this.config.version, this.config.banner);
 		await this.listenerHandler.run();
 	}
 
