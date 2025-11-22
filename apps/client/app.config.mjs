@@ -35,6 +35,7 @@ _______________ _______________________ ________         /\\      /\\  _________
 		env: {
 			CLIENT_ID: process.env.CLIENT_ID,
 			CLIENT_SECRET: process.env.CLIENT_SECRET,
+            GUILD_ID: process.env.GUILD_ID,
 			TOKEN: process.env.TOKEN
 		},
 		owners: ["921906726817644594"],

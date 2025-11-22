@@ -4,6 +4,8 @@ import { ModuleError } from "@/structures/Error";
 import { Module } from "@/structures/Module";
 import { Collection } from "discord.js";
 import { Category } from "./Category";
+import type { TurboClient } from "./Client";
+import { LogService } from "@/services/LogService";
 
 export class Handler<T extends Module = Module> {
 	/**
@@ -15,6 +17,14 @@ export class Handler<T extends Module = Module> {
 	 * The collection of modules.
 	 */
 	public collection: Collection<string, T> = new Collection();
+
+	protected client: TurboClient;
+	protected directory: string;
+
+	public constructor(client: TurboClient, options: HandlerOptions) {
+		this.client = client;
+		this.directory = options.directory;
+	}
 
 	/**
 	 * Adds a module to the collection.
@@ -35,27 +45,31 @@ export class Handler<T extends Module = Module> {
 	}
 
 	/**
-	 * Reads a module from the specified path and adds it to the collection
+	 * Reads a module from the specified path and adds it to the collection.
 	 * @param path The path to the module file.
 	 * @throws {ModuleError} If the module does not have a default export or if the default export is not an instance of Module.
 	 */
 	private async readModule(path: string) {
-		const module = await import(`file://${path}`);
+		try {
+			const module = await import(`file://${path}`);
 
-		if (module.default) {
-			const instance = new module.default();
+			if (module.default) {
+				const instance = new module.default();
 
-			if (instance instanceof Module) {
-				this.setModule(instance as T);
+				if (instance instanceof Module) {
+					this.setModule(instance as T);
+				} else {
+					throw new ModuleError(
+						`Module ${path} default export is not an instance of Module`
+					);
+				}
 			} else {
 				throw new ModuleError(
-					`Module ${path} default export is not an instance of Module`
+					`Module ${path} does not have a default export`
 				);
 			}
-		} else {
-			throw new ModuleError(
-				`Module ${path} does not have a default export`
-			);
+		} catch (error) {
+			LogService.error(error, Handler.name);
 		}
 	}
 
@@ -82,4 +96,8 @@ export class Handler<T extends Module = Module> {
 			}
 		}
 	}
+}
+
+export interface HandlerOptions {
+	directory: string;
 }

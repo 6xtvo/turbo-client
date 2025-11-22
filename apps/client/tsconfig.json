@@ -1,4 +1,5 @@
 {
+    "extends": "@pkgs/ts-config/tsconfig.base.json",
 	"compilerOptions": {
 		"allowJs": true,
 		"outDir": "dist",
@@ -7,7 +8,6 @@
 		},
 		"rootDir": "src"
 	},
-	"exclude": ["node_modules", "dist", "app.config.mjs"],
-	"extends": "@pkgs/ts-config/tsconfig.base.json",
-	"include": ["src"]
+    "include": ["src"],
+	"exclude": ["node_modules", "dist", "app.config.mjs"]
 }

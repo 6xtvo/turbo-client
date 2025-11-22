@@ -1,4 +1,4 @@
-import type { ErrorOptions, WarnOptions } from "@pkgs/types";
+import type { ErrorMessageOptions } from "@pkgs/types";
 import {
 	type CommandInteraction,
 	EmbedBuilder,
@@ -19,7 +19,7 @@ export class EmbedService<TColors extends Record<string, number>> {
 		);
 	}
 
-	public error(interaction: CommandInteraction, options: ErrorOptions) {
+	public error(interaction: CommandInteraction, options: ErrorMessageOptions) {
 		LogService.error(options.error, options.emitter);
 
 		const embed: EmbedBuilder = this.createEmbed({
@@ -30,31 +30,21 @@ export class EmbedService<TColors extends Record<string, number>> {
 			description: `Hey there, ${interaction.user}. Looks like an internal error occurred while processing your command. Please try again later, or if the problem persists, try contacting the owner.`
 		});
 
-		switch (options.method) {
-			case "reply":
-				return interaction.reply({
-					embeds: [embed],
-					ephemeral: options.ephemeral ?? false
-				});
-
-			case "send":
-				if (interaction.channel?.isSendable()) {
-					return interaction.channel.send({
-						embeds: [embed]
-					});
-				}
-		}
+        return interaction.reply({
+            embeds: [embed],
+            flags: ["Ephemeral"]
+        })
 	}
 
-	public warn(interaction: CommandInteraction, options: WarnOptions) {
+	public warn(interaction: CommandInteraction, message: string) {
 		return interaction.reply({
 			embeds: [
 				this.createEmbed({
 					color: this.colors.default,
-					description: options.message
+					description: message
 				})
 			],
-			ephemeral: options.ephemeral ?? false
+			flags: ["Ephemeral"]
 		});
 	}
 }

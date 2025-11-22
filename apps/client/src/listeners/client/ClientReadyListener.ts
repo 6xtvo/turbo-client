@@ -12,10 +12,9 @@ export default class ClientReadyListener extends Listener {
 		});
 	}
 
-	public async exec(client: TurboClient): Promise<void> {
+	public async exec(client: TurboClient) {
 		if (client.isReady()) {
-			LogService.log(
-				"ready",
+			LogService.ready(
 				`Successfully logged in as ${client.user.tag}`,
 				ClientReadyListener.name
 			);

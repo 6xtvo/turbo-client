@@ -27,10 +27,8 @@ import {
  */
 export function attachArguments(
 	command: Command | SubCommand,
-	args?: ApplicationCommandOption[]
+	args: ApplicationCommandOption[]
 ): void {
-	if (!args) return;
-
 	for (const arg of args) {
 		switch (arg.type) {
 			case ApplicationCommandOptionType.Attachment: {

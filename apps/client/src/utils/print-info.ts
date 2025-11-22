@@ -31,10 +31,7 @@ function formatMemoryUsage(): string {
 	return `${used.toFixed(2)}/${total.toFixed(2)} GB`;
 }
 
-export async function printInfo(
-	version: string,
-	banner?: string
-): Promise<void> {
+export async function printInfo(version: string, banner?: string) {
 	console.log("");
 
 	if (banner) {

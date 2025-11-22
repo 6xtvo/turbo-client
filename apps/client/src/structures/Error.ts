@@ -1,7 +1,6 @@
-import { LogService } from "@/services/LogService";
 export class ConfigError extends Error {
 	public constructor(message: string) {
-		super(LogService.error(message, "ConfigError"));
+		super(`ConfigError: ${message}`);
 		this.name = this.constructor.name;
 		Error.captureStackTrace(this, this.constructor);
 	}
@@ -9,7 +8,7 @@ export class ConfigError extends Error {
 
 export class ModuleError extends Error {
 	public constructor(message: string) {
-		super(LogService.error(message, "ModuleError"));
+		super(`ModuleError: ${message}`);
 		this.name = this.constructor.name;
 		Error.captureStackTrace(this, this.constructor);
 	}
@@ -17,7 +16,7 @@ export class ModuleError extends Error {
 
 export class UtilsError extends Error {
 	public constructor(message: string) {
-		super(LogService.error(message, "UtilsError"));
+		super(`UtilsError: ${message}`);
 		this.name = this.constructor.name;
 		Error.captureStackTrace(this, this.constructor);
 	}
@@ -25,7 +24,7 @@ export class UtilsError extends Error {
 
 export class PathError extends Error {
 	public constructor(message: string) {
-		super(LogService.error(message, "PathError"));
+		super(`PathError: ${message}`);
 		this.name = this.constructor.name;
 		Error.captureStackTrace(this, this.constructor);
 	}

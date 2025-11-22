@@ -1,12 +1,9 @@
 {
     "extends": "@pkgs/ts-config/tsconfig.base.json",
 	"compilerOptions": {
-		"declaration": true,
-		"declarationDir": "./dist/types",
-		"noEmit": false,
-		"outDir": "./dist",
+		"noEmit": true,
 		"rootDir": "."
 	},
-    "include": ["src"],
+    "include": ["index.d.ts"],
 	"exclude": ["node_modules", "dist"]
 }

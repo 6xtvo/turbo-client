@@ -5,61 +5,50 @@ import type { Localisations } from "@pkgs/types";
 import {
 	type ApplicationCommandOption,
 	InteractionContextType,
-	type PermissionsString,
 	SlashCommandBuilder
 } from "discord.js";
 import type { SubCommand } from "./SubCommand";
 
 export class Command extends SlashCommandBuilder implements Module {
-	public aliases!: string[];
 	public args?: ApplicationCommandOption[];
 	public category!: string;
-	public command_options!: CommandOptions;
 	public examples!: string[];
-	public ownerOnly!: boolean;
-	public permissions!: CommandPermissions;
-	public subcommands!: SubCommand[];
+	public ownerOnly = false;
+	public permissions?: CommandPermissions;
+	public subcommands?: SubCommand[];
 	public usage!: string;
 
 	public constructor(name: string, options: CommandOptions) {
 		super();
 
-		this.setOptions(options);
-		this.setAliases(options.aliases ? options.aliases : []);
-		this.setCategory(options.category);
-		this.setDescription(options.description);
-		this.setDescriptionLocalizations(
-			options.descriptionLocalisations
-				? options.descriptionLocalisations
-				: {}
-		);
-		this.setContexts([
-			InteractionContextType.Guild,
-			...(options.permissions?.allowDMs
-				? [InteractionContextType.BotDM]
-				: [])
-		]);
-		this.setExamples(options.examples);
-		this.setOwnerOnly(options.ownerOnly ? options.ownerOnly : false);
-		this.setPermissions(
-			options.permissions
-				? options.permissions
-				: {
-						allowDMs: false,
-						user: ["SendMessages", "UseApplicationCommands"],
-						client: [],
-						voiceRequired: false
-					}
-		);
-		this.setName(name);
-		this.setNameLocalizations(
-			options.nameLocalisations ? options.nameLocalisations : {}
-		);
-		this.setNSFW(options.permissions?.nsfw || false);
-		this.setUsage(options.usage);
-		this.setSubcommands(options.subcommands ? options.subcommands : []);
+		const opts = this.options
+			.map((opt) => {
+				const { name, required } = opt.toJSON();
+				return required ? `<${name}>` : `[${name}]`;
+			})
+			.join(" ");
 
-		attachArguments(this, options.args);
+		this.setName(name)
+			.setNameLocalizations(options.nameLocalisations ?? {})
+			.setDescription(options.description)
+			.setDescriptionLocalizations(options.descriptionLocalisations ?? {})
+			.setCategory(options.category)
+			.setExamples(options.examples.map(example => `/${example}`))
+			.setOwnerOnly(options.ownerOnly || false)
+			.setUsage(`/${name} ${opts}`.trim())
+			.setContexts([
+				InteractionContextType.Guild,
+				...(options.permissions?.allowDMs
+					? [InteractionContextType.BotDM]
+					: [])
+			])
+			.setNSFW(options.permissions?.nsfw || false)
+			.setSubcommands(options.subcommands ?? [])
+			.setArguments(options.args);
+
+		if (options.permissions?.user) {
+			this.setDefaultMemberPermissions(options.permissions.user);
+		}
 	}
 
 	public async exec(..._args: unknown[]): Promise<unknown> {
@@ -68,71 +57,57 @@ export class Command extends SlashCommandBuilder implements Module {
 		);
 	}
 
-	public getSubCommand(name: string): SubCommand | null {
-		return (
-			this.subcommands.filter(
-				(subcommand: SubCommand): boolean =>
-					subcommand.name.toLowerCase() === name.toLowerCase()
-			)[0] || null
-		);
+	protected getSubCommand(name: string): SubCommand | undefined {
+		return this.subcommands?.filter(
+			(subcommand: SubCommand): boolean =>
+				subcommand.name.toLowerCase() === name.toLowerCase()
+		)[0];
 	}
 
-	public setAliases(aliases: string[]): this {
-		this.aliases = aliases;
-		return this;
-	}
-
-	public setArgs(args?: ApplicationCommandOption[]): this {
-		this.args = args;
-		return this;
-	}
-
-	public setCategory(category: string): this {
+	protected setCategory(category: string): this {
 		this.category = category;
 		return this;
 	}
 
-	public setExamples(examples: string[]): this {
+	protected setExamples(examples: string[]): this {
 		this.examples = examples;
 		return this;
 	}
 
-	public setOwnerOnly(ownerOnly: boolean): this {
+	protected setOwnerOnly(ownerOnly: boolean): this {
 		this.ownerOnly = ownerOnly;
 		return this;
 	}
 
-	public setPermissions(permissions: CommandPermissions): this {
-		this.permissions = permissions;
-		return this;
-	}
-
-	public setUsage(usage: string): this {
+	protected setUsage(usage: string): this {
 		this.usage = usage;
 		return this;
 	}
 
-	public setSubcommands(subcommands: SubCommand[]): this {
+	protected setSubcommands(subcommands: SubCommand[]): this {
 		this.subcommands = subcommands;
+
+		for (const subcommand of subcommands) {
+			this.addSubcommand(subcommand);
+		}
+
 		return this;
 	}
 
-	private setOptions(options: CommandOptions): this {
-		this.command_options = options;
-		return this;
+	private setArguments(args?: ApplicationCommandOption[]): void {
+		if (!args) return;
+
+		attachArguments(this, args);
 	}
 }
 
 export interface CommandPermissions {
 	allowDMs: boolean;
-	client: PermissionsString[];
 	nsfw?: boolean;
-	user: PermissionsString[];
-	voiceRequired?: boolean;
+	user?: string | number | bigint;
 }
 
 export interface CommandOptions {
-	aliases?: string[];
 	args?: ApplicationCommandOption[];
 	category: string;
 	description: string;
@@ -142,5 +117,4 @@ export interface CommandOptions {
 	ownerOnly?: boolean;
 	permissions?: CommandPermissions;
 	subcommands?: SubCommand[];
-	usage: string;
 }

@@ -90,7 +90,7 @@ class PathError extends Error {
 // -----------------------------
 // Core file-processing functions
 // -----------------------------
-async function updateFileImports(filePath: string): Promise<void> {
+async function updateFileImports(filePath: string) {
 	try {
 		if (excludedExts.some((ext) => filePath.endsWith(ext)))
 			return console.log(`Skipping excluded file: ${filePath}`);
@@ -126,7 +126,7 @@ async function getAllJsFiles(dir: string): Promise<string[]> {
 	return jsFiles;
 }
 
-async function processFiles(): Promise<void> {
+async function processFiles() {
 	try {
 		const jsFiles = await getAllJsFiles(dist);
 		await Promise.all(jsFiles.map(updateFileImports)).then(() =>

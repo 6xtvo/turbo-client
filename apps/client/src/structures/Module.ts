@@ -5,7 +5,7 @@ export class Module {
 	public description: string;
 	public category: string;
 
-	public constructor(name: string, options: ModuleOptions) {
+	protected constructor(name: string, options: ModuleOptions) {
 		this.name = name;
 		this.description = options.description || "No description provided";
 		this.category = options.category;

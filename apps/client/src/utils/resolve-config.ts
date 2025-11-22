@@ -23,8 +23,7 @@ export async function resolveConfig(filePath: string): Promise<ConfigOptions> {
 
 			ValidatorService.validateConfig(config);
 
-			LogService.log(
-				"info",
+			LogService.info(
 				`Successfully resolved config from ${resolvedPath}`,
 				"ConfigResolver"
 			);
@@ -34,11 +33,7 @@ export async function resolveConfig(filePath: string): Promise<ConfigOptions> {
 
 		throw new PathError("Config file does not have a default export");
 	} catch (error: unknown) {
-		LogService.log(
-			"error",
-			(error as Error).stack ?? (error as Error).message,
-			"ConfigResolver"
-		);
+		LogService.error(error, "ConfigResolver");
 	}
 
 	return {} as ConfigOptions;

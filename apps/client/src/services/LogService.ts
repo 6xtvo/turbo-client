@@ -2,6 +2,12 @@ import { CHALK, LEVEL_COLORS, LEVEL_LABELS } from "@/constants/logger";
 import type { LogType } from "@pkgs/types";
 
 export const LogService = {
+	normalise(data: unknown): string {
+		if (typeof data === "string") return data;
+		if (data instanceof Error) return data.stack ?? data.message;
+		return JSON.stringify(data);
+	},
+
 	/**
 	 * Formats a log message.
 	 * @param {LogType} type The log level type
@@ -24,49 +30,53 @@ export const LogService = {
 		return `${date} ${time}  ${paddedLevel} --- [main] ${paddedEmitter}: ${message}`;
 	},
 
-	/**
-	 * Logs a message to the console.
-	 * @param {LogType} type The log level type
-	 * @param {string} message The message to log
-	 * @param {string} emitter The source of the log message
-	 */
-	log(type: LogType, message: string, emitter: string): void {
+	log(type: LogType, data: unknown, emitter: string) {
+		const message = this.normalise(data);
 		console.log(this.format(type, message, emitter));
 	},
 
 	/**
 	 * Logs an info level message.
-	 * @param {string} message The message to log
+	 * @param {unknown} data The data to log
 	 * @param {string} emitter The source of the log message
 	 */
-	info(message: string, emitter: string) {
-		return this.format("info", message, emitter);
+	info(data: unknown, emitter: string) {
+		this.log("info", data, emitter);
 	},
 
 	/**
 	 * Logs a ready level message.
-	 * @param {string} message The message to log
+	 * @param {unknown} data The data to log
 	 * @param {string} emitter The source of the log message
 	 */
-	ready(message: string, emitter: string) {
-		return this.format("ready", message, emitter);
+	ready(data: unknown, emitter: string) {
+        this.log("ready", data, emitter);
 	},
 
 	/**
 	 * Logs a warn level message.
-	 * @param {string} message The message to log
+	 * @param {unknown} data The data to log
 	 * @param {string} emitter The source of the log message
 	 */
-	warn(message: string, emitter: string) {
-		return this.format("warn", message, emitter);
+	warn(data: unknown, emitter: string) {
+		this.log("warn", data, emitter);
 	},
 
 	/**
 	 * Logs an error level message.
-	 * @param {string} message The message to log
+	 * @param {unknown} data The data to log
 	 * @param {string} error_type The type of error e.g. `PathError`
 	 */
-	error(message: string, error_type: string) {
-		return this.format("error", message, error_type);
+	error(data: unknown, error_type: string) {
+		this.log("error", data, error_type);
+	},
+    
+	/**
+	 * Logs a debug level message.
+	 * @param {unknown} data The data to log
+	 * @param {string} emitter The source of the log message
+	 */
+	debug(data: unknown, emitter: string) {
+		this.log("debug", data, emitter);
 	}
 };

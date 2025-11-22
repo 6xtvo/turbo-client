@@ -8,17 +8,9 @@ export interface ConfigOptions {
 	version: string;
 }
 
-export interface ErrorOptions {
-	deferred?: boolean;
+export interface ErrorMessageOptions {
 	emitter: string;
-	ephemeral?: boolean;
-	error: string;
-	method: "reply" | "send";
-}
-
-export interface WarnOptions {
-	message: string;
-	ephemeral?: boolean;
+	error: string | unknown;
 }
 
 export type MessageFunction<T> =

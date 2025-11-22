@@ -11,11 +11,10 @@ export class SubCommand extends SlashCommandSubcommandBuilder {
 	public constructor(name: string, options: SubCommandOptions) {
 		super();
 
-		this.setName(name);
-		this.setDescription(options.description);
-		this.setArgs(options.args);
-
-		attachArguments(this, options.args);
+		this
+            .setName(name)
+            .setDescription(options.description)
+            .setArguments(options.args);
 	}
 
 	public async exec(..._args: unknown[]): Promise<unknown> {
@@ -24,10 +23,11 @@ export class SubCommand extends SlashCommandSubcommandBuilder {
 		);
 	}
 
-	public setArgs(args?: ApplicationCommandOption[]): this {
-		this.args = args;
-		return this;
-	}
+    private setArguments(args?: ApplicationCommandOption[]): void {
+        if (!args) return;
+
+        attachArguments(this, args);
+    }
 }
 
 export interface SubCommandOptions {
